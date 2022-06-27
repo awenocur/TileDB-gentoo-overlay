@@ -13,7 +13,7 @@ EGIT_COMMIT="0b54e51a08e1a4208e73cdd26aa2e41f67a6840f"
 
 PATCHES=(
 	"${FILESDIR}/fix-doc-config.patch"
-	"${FILESDIR}/cancel-magic-download.patch"
+	"${FILESDIR}/TileDB-2.10.0-cancel-magic-download.patch"
 )
 
 SLOT="0"
