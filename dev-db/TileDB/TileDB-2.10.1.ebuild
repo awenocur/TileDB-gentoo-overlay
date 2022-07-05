@@ -24,7 +24,7 @@ MAGIC_REV="5.38.1.tiledb"
 CMAKE_MAKEFILE_GENERATOR=emake
 
 
-BDEPEND="doc? ( <dev-python/sphinx-4 )
+BDEPEND="doc? ( dev-python/sphinx )
 	 >=dev-util/cmake-3.21"
 
 DEPEND="dev-libs/spdlog
