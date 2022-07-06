@@ -1,0 +1,21 @@
+diff --git a/setup.py b/setup.py
+index a1237d1..e70284b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -100,7 +100,7 @@ def find_libtiledbvcf():
+     if LIBTILEDBVCF_PATH:
+         p.native_lib_install_dirs = [LIBTILEDBVCF_PATH]
+ 
+-    libdirs = ["lib"]
++    libdirs = ["lib", "lib64"]
+     libnames = ["libtiledbvcf.dylib", "libtiledbvcf.so"]
+     for root in p.native_lib_install_dirs:
+         for libdir in libdirs:
+@@ -176,7 +176,6 @@ def find_or_build_libtiledbvcf(setuptools_cmd):
+     # Find the native library
+     lib_path = find_libtiledbvcf()
+     if lib_path is None:
+-        build_libtiledbvcf()
+         lib_path = find_libtiledbvcf()
+         if lib_path is None:
+             raise Exception("Could not find native libtiledbvcf after building.")
