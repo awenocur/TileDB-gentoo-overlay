@@ -1,0 +1,13 @@
+diff --git a/doc/source/conf.py b/doc/source/conf.py
+index 4dde245d1..db1c0bfaf 100644
+--- a/doc/source/conf.py
++++ b/doc/source/conf.py
+@@ -205,7 +205,7 @@ text_replacements = {
+ # -- Custom setup -----------------------------------------------------------
+ 
+ def add_custom_js(app):
+-    app.add_javascript('custom.js')
++    app.add_js_file('custom.js')
+ 
+ def setup(app):
+     app.add_config_value('text_replacements', {}, True)

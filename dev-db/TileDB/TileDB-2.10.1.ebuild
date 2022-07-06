@@ -14,6 +14,8 @@ EGIT_COMMIT="6535d4cfdd6cc520b52a760b4185a26aa14c3354"
 PATCHES=(
 	"${FILESDIR}/fix-doc-config.patch"
 	"${FILESDIR}/TileDB-2.10.0-cancel-magic-download.patch"
+	"${FILESDIR}/remove-incompatible-package-names.patch"
+	"${FILESDIR}/fix_deprecated_sphinx_calls.patch"
 )
 
 SLOT="0"
@@ -52,6 +54,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_C_FLAGS=-DSPDLOG_FMT_EXTERNAL
 		-DCMAKE_CXX_FLAGS=-DSPDLOG_FMT_EXTERNAL
+		-DTILEDB_TOOLS=TRUE
 	)
 	cmake_src_configure
 }
@@ -59,7 +62,7 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 	cd ${BUILD_DIR} && make doc
-	use doc && cd ${S}/doc && TILEDB_DIR="${S}" DOX_XML_DIR="${BUILD_DIR}"/xml sphinx-build -E -W -T -b html -d doctrees -D language=en source html
+	use doc && cd ${S}/doc && TILEDB_DIR="${S}" DOX_XML_DIR="${BUILD_DIR}"/xml sphinx-build -E -T -b html -d doctrees -D language=en source html
 }
 
 src_install() {
