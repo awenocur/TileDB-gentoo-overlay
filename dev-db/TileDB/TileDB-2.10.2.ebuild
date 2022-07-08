@@ -9,7 +9,7 @@ DESCRIPTION="The Universal Storage Engine"
 HOMEPAGE="https://tiledb.com/"
 
 EGIT_REPO_URI="https://github.com/TileDB-Inc/TileDB.git"
-EGIT_COMMIT="6535d4cfdd6cc520b52a760b4185a26aa14c3354"
+EGIT_COMMIT="9ab84f907fa5bbbc22099df220ac86f1391509f1"
 
 PATCHES=(
 	"${FILESDIR}/fix-doc-config.patch"
