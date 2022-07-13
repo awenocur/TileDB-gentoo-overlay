@@ -21,7 +21,7 @@ PATCHES=(
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="amd64 ~x86"
-IUSE="doc"
+IUSE="doc +s3"
 MAGIC_REV="5.38.1.tiledb"
 CMAKE_MAKEFILE_GENERATOR=emake
 
@@ -35,6 +35,7 @@ DEPEND="dev-libs/spdlog
 	sys-libs/zlib
 	app-doc/doxygen
 	app-arch/lz4
+	s3? ( dev-libs/aws-sdk-cpp[access-management,s3] )
 	"
 
 src_unpack()
@@ -56,6 +57,9 @@ src_configure() {
 		-DCMAKE_CXX_FLAGS=-DSPDLOG_FMT_EXTERNAL
 		-DTILEDB_TOOLS=TRUE
 	)
+	if use s3 ; then
+		mycmakeargs+=( -DTILEDB_S3=TRUE )		
+	fi
 	cmake_src_configure
 }
 
