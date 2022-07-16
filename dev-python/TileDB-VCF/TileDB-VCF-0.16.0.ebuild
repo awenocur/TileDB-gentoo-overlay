@@ -17,7 +17,7 @@ S="${WORKDIR}/${P}/apis/python"
 PYTHON_REQ_USE="threads(+)"
 
 KEYWORDS="amd64 ~x86"
-
+IUSE="debug"
 #DISTUTILS_USE_SETUPTOOLS=bdepend
 
 DEPEND="=sci-biology/TileDB-VCF-${PV}
@@ -32,3 +32,8 @@ HOMEPAGE="https://tiledb.com/"
 
 DISTUTILS_ARGS=("--libtiledbvcf=/usr/"
 		"--disable-download-tiledb-prebuilt")
+python_configure_all() {
+	if use debug ; then
+	   DISTUTILS_ARGS+=( "--debug" )
+	fi
+}
