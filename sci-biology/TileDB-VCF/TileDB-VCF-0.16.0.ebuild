@@ -15,7 +15,7 @@ PATCHES=( "${FILESDIR}/${PN}-0.15.0-test-add-explicit-catch-import.patch" )
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="debug"
 S="${WORKDIR}/${P}/libtiledbvcf"
 CMAKE_MAKEFILE_GENERATOR=emake
 
@@ -41,6 +41,9 @@ src_configure() {
 		-DFORCE_EXTERNAL_TILEDB=OFF
 		-DCATCH_INCLUDE_DIR=/usr/include/catch
 	)
+	if use debug ; then
+		mycmakeargs+=(-DCMAKE_BUILD_TYPE=Debug )		
+	fi
 	cmake_src_configure
 }
 
