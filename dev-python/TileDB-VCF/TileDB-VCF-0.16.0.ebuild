@@ -21,11 +21,11 @@ IUSE="debug"
 #DISTUTILS_USE_SETUPTOOLS=bdepend
 
 DEPEND="=sci-biology/TileDB-VCF-${PV}
-	>=dev-python/pyarrow-3.0.0
-	>=dev-python/pybind11-2.3.0
-	>=dev-python/dask-0.19.0
-	dev-python/pip
-	dev-python/setuptools_scm_git_archive"
+	>=dev-python/pyarrow-3.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pybind11-2.3.0[${PYTHON_USEDEP}]
+	>=dev-python/dask-0.19.0[${PYTHON_USEDEP}]
+	dev-python/pip[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]"
 
 DESCRIPTION="The Universal Storage Engine"
 HOMEPAGE="https://tiledb.com/"
