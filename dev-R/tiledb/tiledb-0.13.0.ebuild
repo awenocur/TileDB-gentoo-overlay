@@ -13,6 +13,7 @@ KEYWORDS="~amd64"
 LICENSE=MIT
 
 DEPEND=">=dev-R/Rcpp-1.0.8
+	dev-R/nanotime
 	>=dev-db/TileDB-2.9"
 
 EGIT_REPO_URI="https://github.com/TileDB-Inc/TileDB-R.git"
