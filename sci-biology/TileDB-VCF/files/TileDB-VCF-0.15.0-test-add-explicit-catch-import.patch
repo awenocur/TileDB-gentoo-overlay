@@ -2,11 +2,11 @@ diff --git a/libtiledbvcf/cmake/Modules/FindCatch.cmake b/libtiledbvcf/cmake/Mod
 index b6521d7..a65df3f 100644
 --- a/cmake/Modules/FindCatch.cmake
 +++ b/cmake/Modules/FindCatch.cmake
-@@ -34,6 +34,8 @@
+@@ -34,5 +34,7 @@
  message(STATUS "searching for catch in ${EP_SOURCE_DIR}")
  set(CATCH_PATHS ${EP_SOURCE_DIR}/ep_catch/single_include/catch2)
  
-+set(CATCH_INCLUDE_DIR "/usr/include/catch")
++set(CATCH_INCLUDE_DIR "/usr/include/catch2")
 +
  find_path(CATCH_INCLUDE_DIR
    NAMES catch.hpp
