@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>adam.wenocur@tiledb.com</email>
+		<name>Adam Wenocur</name>
+	</maintainer>
+	<use>
+	  <flag name="serialization">Enable serialization support.</flag>
+	  <flag name="s3">Enable AWS S3 support.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,30 @@
+diff --git a/cmake/Modules/FindCapnp_EP.cmake b/cmake/Modules/FindCapnp_EP.cmake
+index 837c281ca..9bfe45db3 100644
+--- a/cmake/Modules/FindCapnp_EP.cmake
++++ b/cmake/Modules/FindCapnp_EP.cmake
+@@ -73,11 +73,9 @@ if (NOT CAPNP_FOUND)
+       set(CONDITIONAL_PATCH "")
+     endif()
+ 
++    message("CapnProto dir for external project: " ${TILEDB_CAPNPROTO_SRC})
+     ExternalProject_Add(ep_capnp
+-       PREFIX "externals"
+-       DOWNLOAD_NAME ep_capnp.${TILEDB_CAPNPROTO_VERSION}.tar.gz
+-       URL ${TILEDB_CAPNPROTO_URL}
+-       URL_HASH ${TILEDB_CAPNPROTO_HASH_SPEC}
++      SOURCE_DIR ${TILEDB_CAPNPROTO_SRC}
+       CMAKE_ARGS
+          -DCMAKE_PREFIX_PATH=${TILEDB_EP_INSTALL_PREFIX}
+          -DCMAKE_INSTALL_PREFIX=${TILEDB_EP_INSTALL_PREFIX}
+diff --git a/cmake/TileDB-Superbuild.cmake b/cmake/TileDB-Superbuild.cmake
+index 1f79522fe..bea357fb4 100644
+--- a/cmake/TileDB-Superbuild.cmake
++++ b/cmake/TileDB-Superbuild.cmake
+@@ -47,6 +47,7 @@ set(INHERITED_CMAKE_ARGS
+   -DTILEDB_INSTALL_LIBDIR=${TILEDB_INSTALL_LIBDIR}
+   -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
+   -DTILEDB_EXPERIMENTAL_FEATURES=${TILEDB_EXPERIMENTAL_FEATURES}
++  -DTILEDB_CAPNPROTO_SRC=${TILEDB_CAPNPROTO_SRC}
+ )
+ 
+ if (TILEDB_TESTS)

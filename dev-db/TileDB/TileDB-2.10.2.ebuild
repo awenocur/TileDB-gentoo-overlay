@@ -14,6 +14,7 @@ EGIT_COMMIT="9ab84f907fa5bbbc22099df220ac86f1391509f1"
 PATCHES=(
 	"${FILESDIR}/fix-doc-config.patch"
 	"${FILESDIR}/TileDB-2.10.0-cancel-magic-download.patch"
+	"${FILESDIR}/TileDB-2.10.2-cancel-capnp-download.patch"
 	"${FILESDIR}/remove-incompatible-package-names.patch"
 	"${FILESDIR}/fix_deprecated_sphinx_calls.patch"
 )
@@ -21,8 +22,9 @@ PATCHES=(
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="amd64 ~x86"
-IUSE="doc +s3"
+IUSE="doc +s3 +serialization"
 MAGIC_REV="5.38.1.tiledb"
+CAPNPROTO_REV="v0.8.0"
 CMAKE_MAKEFILE_GENERATOR=emake
 
 
@@ -41,10 +43,13 @@ DEPEND="dev-libs/spdlog
 src_unpack()
 {
 	git-r3_fetch "https://github.com/TileDB-Inc/file-windows.git" ${MAGIC_REV}
+	if use serialization; then git-r3_fetch "https://github.com/capnproto/capnproto.git" ${CAPNPROTO_REV}; fi
 	git-r3_src_unpack
 	git-r3_checkout "https://github.com/TileDB-Inc/file-windows.git" ${MAGIC_REV}
+	if use serialization; then git-r3_checkout "https://github.com/capnproto/capnproto.git" ${CAPNPROTO_REV}; fi
 	mkdir -p "${BUILD_DIR}/externals/src"
 	mv ${WORKDIR}/${MAGIC_REV} "${BUILD_DIR}/externals/src/ep_magic"
+	if use serialization; then mv ${WORKDIR}/${CAPNPROTO_REV} "${BUILD_DIR}/externals/src/ep_capnp"; fi
 }
 
 src_prepare() {
@@ -59,6 +64,10 @@ src_configure() {
 	)
 	if use s3 ; then
 		mycmakeargs+=( -DTILEDB_S3=TRUE )		
+	fi
+	if use serialization ; then
+		mycmakeargs+=( -DTILEDB_SERIALIZATION=TRUE )
+		mycmakeargs+=( -DTILEDB_CAPNPROTO_SRC=${BUILD_DIR}/externals/src/ep_capnp )
 	fi
 	cmake_src_configure
 }
