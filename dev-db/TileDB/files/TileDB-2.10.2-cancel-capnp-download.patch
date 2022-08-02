@@ -28,3 +28,4 @@ index 1f79522fe..bea357fb4 100644
  )
  
  if (TILEDB_TESTS)
+ 
