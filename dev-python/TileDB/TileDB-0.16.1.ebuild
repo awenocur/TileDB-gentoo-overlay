@@ -21,6 +21,7 @@ S="${WORKDIR}/${P}"
 PYTHON_REQ_USE="threads(+)"
 
 KEYWORDS="amd64 ~x86"
+IUSE="debug"
 
 DEPEND=">=dev-db/TileDB-2.9
 	>=dev-python/pybind11-2.3.0[${PYTHON_USEDEP}]"
@@ -35,6 +36,12 @@ src_prepare()
 	cp -pR ${DISTDIR} ${WORKDIR}/distdir
 	mv ${WORKDIR}/distdir/wheel-0.37.1.gh.tar.gz ${WORKDIR}/distdir/wheel-0.37.1.tar.gz
 	default
+}
+
+python_configure_all() {
+	if use debug ; then
+	   DISTUTILS_ARGS+=( "--debug" )
+	fi
 }
 
 src_compile()

@@ -22,7 +22,7 @@ PATCHES=(
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="amd64 ~x86"
-IUSE="doc +s3 +serialization"
+IUSE="debug doc +s3 +serialization"
 MAGIC_REV="5.38.1.tiledb"
 CAPNPROTO_REV="v0.8.0"
 CMAKE_MAKEFILE_GENERATOR=emake
@@ -68,6 +68,9 @@ src_configure() {
 	if use serialization ; then
 		mycmakeargs+=( -DTILEDB_SERIALIZATION=TRUE )
 		mycmakeargs+=( -DTILEDB_CAPNPROTO_SRC=${BUILD_DIR}/externals/src/ep_capnp )
+	fi
+	if use debug ; then
+		mycmakeargs+=(-DCMAKE_BUILD_TYPE=Debug )		
 	fi
 	cmake_src_configure
 }
