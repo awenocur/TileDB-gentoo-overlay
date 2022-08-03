@@ -4,6 +4,8 @@
 EAPI=7
 
 R_OVERRIDE_DOWNLOAD=YES
+R_REQUIRE_BUILD=YES
+R_BYPASS_DOCS=YES
 
 inherit R-packages git-r3
 
@@ -14,7 +16,13 @@ LICENSE=MIT
 
 DEPEND=">=dev-R/Rcpp-1.0.8
 	dev-R/nanotime
-	>=dev-db/TileDB-2.9"
+	>=dev-db/TileDB-2.9
+	dev-R/simplermarkdown"
 
 EGIT_REPO_URI="https://github.com/TileDB-Inc/TileDB-R.git"
 EGIT_COMMIT="b3bcc7da2539b3801fa2e7c40ae89e29a55f8ddb"
+
+src_install()
+{
+	R-packages_src_install
+}

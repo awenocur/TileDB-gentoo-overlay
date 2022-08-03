@@ -35,12 +35,18 @@ R-packages_src_prepare() {
 }
 
 R-packages_src_compile() {
+	if [ ${R_REQUIRE_BUILD} == YES ]; then MAKEFLAGS="AR=$(tc-getAR) CFLAGS=${CFLAGS// /\\ } CXXFLAGS=${CXXFLAGS// /\\ } FFLAGS=${FFLAGS// /\\ } FCFLAGS=${FCFLAGS// /\\ } LDFLAGS=${LDFLAGS// /\\ }" R CMD build . || die;
+	MAKEFLAGS="AR=$(tc-getAR) CFLAGS=${CFLAGS// /\\ } CXXFLAGS=${CXXFLAGS// /\\ } FFLAGS=${FFLAGS// /\\ } FCFLAGS=${FCFLAGS// /\\ } LDFLAGS=${LDFLAGS// /\\ }" R CMD INSTALL ${PN}_${PV}.tar.gz -l "${WORKDIR}" "--byte-compile" || die
+	else
 	MAKEFLAGS="AR=$(tc-getAR) CFLAGS=${CFLAGS// /\\ } CXXFLAGS=${CXXFLAGS// /\\ } FFLAGS=${FFLAGS// /\\ } FCFLAGS=${FCFLAGS// /\\ } LDFLAGS=${LDFLAGS// /\\ }" R CMD INSTALL . -l "${WORKDIR}" "--byte-compile" || die
+	fi
 }
 
 R-packages_src_install() {
 	cd "${WORKDIR}/${PN//_/.}" || die
 
+	if([ ! ${R_BYPASS_DOCS} ] || [ ! ${R_BYPASS_DOCS} == YES ])
+	then
 	dodocrm examples || die
 	#dodocrm DESCRIPTION || die #keep this
 	dodocrm NEWS.md || die
@@ -58,6 +64,7 @@ R-packages_src_install() {
 		docinto "${DOCSDIR}"
 		dodoc -r doc/.
 		rm -r doc || die
+	fi
 	fi
 
 	insinto "/usr/$(get_libdir)/R/site-library"
