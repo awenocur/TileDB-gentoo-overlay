@@ -1,0 +1,15 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c6c33a1b..28797009 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -108,10 +108,6 @@ target_compile_definitions(TILEDB_VCF_OBJECTS PRIVATE
+ ############################################################
+ 
+ if (SANITIZER)
+-  string( TOLOWER "${CMAKE_BUILD_TYPE}" CMAKE_BUILD_TYPE_LOWER )
+-  if (NOT CMAKE_BUILD_TYPE_LOWER MATCHES "debug")
+-    message(FATAL_ERROR "Sanitizers only enabled for Debug build")
+-  endif()
+   string(TOLOWER ${SANITIZER} SANITIZER)
+   if (NOT SANITIZER MATCHES "^(address|memory|leak|thread|undefined)$")
+     message(FATAL_ERROR "Unknown clang sanitizer: ${SANITIZER})")

@@ -10,7 +10,7 @@ inherit R-packages git-r3
 
 DESCRIPTION="R interface to the storage engine of TileDB"
 HOMEPAGE="https://tiledb.com/"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 LICENSE=MIT
 
 DEPEND=">=dev-R/Rcpp-1.0.8
@@ -19,7 +19,7 @@ DEPEND=">=dev-R/Rcpp-1.0.8
 	dev-R/simplermarkdown"
 
 EGIT_REPO_URI="https://github.com/TileDB-Inc/TileDB-R.git"
-EGIT_COMMIT="b3bcc7da2539b3801fa2e7c40ae89e29a55f8ddb"
+EGIT_COMMIT="e0e816d8cef2e0b4c048485e423f14ac518b874c"
 
 src_install()
 {

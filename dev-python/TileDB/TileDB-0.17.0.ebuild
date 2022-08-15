@@ -12,9 +12,9 @@ SRC_URI="https://files.pythonhosted.org/packages/e6/e2/f2bfdf364e016f7a464db709e
 	 https://github.com/pypa/wheel/archive/0.37.1.tar.gz -> wheel-0.37.1.gh.tar.gz"
 
 EGIT_REPO_URI="https://github.com/TileDB-Inc/TileDB-Py.git"
-EGIT_COMMIT="648546ce7bb1ee609e0d27fedbf287e665afdf2d"
+EGIT_COMMIT="d50166412e957fe310170bf36916da72c408d37a"
 
-PATCHES=("${FILESDIR}/TileDB-0.16.1-requirements.patch"
+PATCHES=("${FILESDIR}/TileDB-0.17.0-requirements.patch"
 	"${FILESDIR}/allow_any_cmake.patch")
 
 S="${WORKDIR}/${P}"
