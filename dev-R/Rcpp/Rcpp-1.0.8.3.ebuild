@@ -4,6 +4,7 @@
 EAPI="7"
 
 inherit R-packages
+R_BYPASS_DOCS=YES
 
 DESCRIPTION='Seamless R and C++ Integration'
 LICENSE='GPL-2+'
