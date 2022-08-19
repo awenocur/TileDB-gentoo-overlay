@@ -8,7 +8,7 @@ LICENSE="MIT"
 PATCHES=("${FILESDIR}/disable-ext-build.patch")
 
 PYTHON_COMPAT=( python3_{6..10} )
-inherit distutils-r1
+inherit distutils-r1 git-r3
 
 EGIT_REPO_URI="https://github.com/TileDB-Inc/TileDB-VCF.git"
 EGIT_COMMIT="0ec05ea2f7a68ddbd7ad62cb02213a21dbfac4e6"
