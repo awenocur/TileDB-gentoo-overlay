@@ -37,6 +37,7 @@ DEPEND="dev-libs/spdlog
 	app-doc/doxygen
 	app-arch/lz4
 	s3? ( dev-libs/aws-sdk-cpp[access-management,s3] )
+	dev-cpp/clipp
 	"
 
 src_unpack()

@@ -25,7 +25,10 @@ KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 DEPEND=">=dev-db/TileDB-2.9
-	>=dev-python/pybind11-2.3.0[${PYTHON_USEDEP}]"
+	>=dev-python/pybind11-2.3.0[${PYTHON_USEDEP}]
+	dev-python/pip
+	dev-python/cython
+	>=dev-python/numpy-1.16.5"
 
 DESCRIPTION="The Universal Storage Engine"
 HOMEPAGE="https://tiledb.com/"
