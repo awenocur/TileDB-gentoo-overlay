@@ -31,6 +31,9 @@ COMMON_DEPEND="
 	ccache? ( dev-util/ccache )
 	glog? ( dev-cpp/glog )
 	openssl? ( dev-libs/openssl:= )
+	dev-libs/libutf8proc
+	app-arch/snappy
+	dev-libs/re2
 "
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}"

@@ -22,7 +22,8 @@ CMAKE_MAKEFILE_GENERATOR=emake
 DEPEND=">=dev-db/TileDB-2.9
 	sci-libs/htslib
 	dev-cpp/cli11[single-header]
-	>=dev-libs/spdlog-1.9"
+	>=dev-libs/spdlog-1.9
+	<dev-libs/libfmt-8.1"
 
 BDEPEND="<dev-cpp/catch-2
 	dev-cpp/clipp"
