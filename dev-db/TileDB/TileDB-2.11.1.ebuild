@@ -27,7 +27,10 @@ CAPNPROTO_REV="v0.8.0"
 CMAKE_MAKEFILE_GENERATOR=emake
 
 
-BDEPEND="doc? ( dev-python/sphinx )
+BDEPEND="doc? ( dev-python/sphinx 
+	        dev-python/sphinx_rtd_theme
+		dev-python/sphinxcontrib-contentui
+		dev-python/breathe )
 	 >=dev-util/cmake-3.21"
 
 DEPEND="dev-libs/spdlog

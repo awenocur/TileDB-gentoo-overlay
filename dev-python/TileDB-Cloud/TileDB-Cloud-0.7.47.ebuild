@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 SLOT=0
 LICENSE="MIT"
 
@@ -17,6 +17,10 @@ PYTHON_REQ_USE="threads(+)"
 
 KEYWORDS="amd64 ~x86"
 
+RDEPEND="
+        dev-python/pyarrow
+        dev-python/TileDB
+        dev-python/attrs"
 BDEPEND="dev-python/setuptools"
 
 DESCRIPTION="The Universal Storage Engine"
