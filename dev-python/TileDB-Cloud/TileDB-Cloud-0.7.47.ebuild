@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{6..10} )
 inherit distutils-r1 git-r3
 
 EGIT_REPO_URI="https://github.com/TileDB-Inc/TileDB-Cloud-Py.git"
-EGIT_COMMIT="13da4acd5e7dea9ecb0408fdeb9ae6fd244e24d4"
+EGIT_COMMIT="679c3ba89279b581560f8657dbbfad36588a02b4"
 
 S="${WORKDIR}/${P}"
 
