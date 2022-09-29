@@ -32,19 +32,26 @@ diff --git a/cloudpickle/__init__.py b/cloudpickle/__init__.py
 index af72f6e..97e479d 100644
 --- a/cloudpickle/__init__.py
 +++ b/cloudpickle/__init__.py
-@@ -4,8 +4,14 @@ import sys
+@@ -4,8 +4,21 @@ import sys
  import pickle
  
  
 +import sys
-+import tiledb.cloudpickle
++old_module = sys.modules['cloudpickle'] if sys.modules.__contains__('cloudpickle') else None
++import tiledb.cloudpickle as internal_cloudpickle
 +sys.modules['cloudpickle'] = sys.modules['tiledb.cloudpickle']
 +sys.modules['cloudpickle'].__name__ = 'cloudpickle'
++del internal_cloudpickle
 +sys.modules.pop('tiledb.cloudpickle')
  from cloudpickle.cloudpickle import *
  if sys.version_info[:2] >= (3, 8):
      from cloudpickle.cloudpickle_fast import CloudPickler, dumps, dump
 +sys.modules['tiledb.cloudpickle'] = sys.modules['cloudpickle']
++sys.modules.pop('cloudpickle')
++if old_module:
++    sys.modules['cloudpickle'] = old_module
++del old_module
++del sys
  
  __version__ = '1.4.1'
  
