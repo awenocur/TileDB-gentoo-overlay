@@ -20,8 +20,19 @@ KEYWORDS="amd64 ~x86"
 RDEPEND="
         dev-python/pyarrow
         dev-python/TileDB
-        dev-python/attrs"
+        dev-python/attrs
+	=dev-python/cloudpickle-TileDB-1.4.1
+	"
 BDEPEND="dev-python/setuptools"
 
 DESCRIPTION="The Universal Storage Engine"
 HOMEPAGE="https://tiledb.com/"
+
+src_prepare()
+{
+	default
+	for file in $(find "${S}" -type f -exec grep -l '^import cloudpickle' \{} \;)
+		do printf '%s\n%s\n' ',s/^import cloudpickle$/import tiledb.cloud.cloudpickle as cloudpickle/' 'wq' | ed "${file}"
+	done
+	cp ${FILESDIR}/cloudpickle.py ${S}/tiledb/cloud
+}
