@@ -1,0 +1,28 @@
+diff --git a/requirements_dev.txt b/requirements_dev.txt
+index 1adf884..f352bdb 100644
+--- a/requirements_dev.txt
++++ b/requirements_dev.txt
+@@ -2,8 +2,7 @@ numpy >= 1.16.5
+ 
+ # ------------------------------------------------
+ # ** MUST sync with misc/requirements_wheel.txt **
+ # ------------------------------------------------
+-cmake >= 3.23
+ cython >= 0.27
+ pybind11 >= 2.6.2
+ setuptools >= 18.0
+ diff --git a/setup.py b/setup.py
+index bf8e24c..0aba60e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -552,10 +552,4 @@ def setup_requires():
+         req = parse_requirements("requirements_dev.txt")
+         req = list(filter(lambda r: not r.startswith("-r"), req))
+ 
+-    req_cmake = list(filter(lambda r: "cmake" in r, req))[0]
+-
+-    # Add cmake requirement if libtiledb is not found and cmake is not available.
+-    if not libtiledb_exists(LIB_DIRS) and not cmake_available():
+-        req.append(req_cmake)
+-
+     return req

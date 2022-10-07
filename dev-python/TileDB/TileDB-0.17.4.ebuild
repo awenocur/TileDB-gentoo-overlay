@@ -11,8 +11,8 @@ inherit distutils-r1 git-r3
 EGIT_REPO_URI="https://github.com/TileDB-Inc/TileDB-Py.git"
 EGIT_COMMIT="6d91699976c09d15be5b3c3277a4a0d4539ece36"
 
-PATCHES=("${FILESDIR}/TileDB-0.17.0-requirements.patch"
-	"${FILESDIR}/allow_any_cmake.patch")
+PATCHES=("${FILESDIR}/TileDB-0.17.4-requirements.patch"
+	"${FILESDIR}/TileDB-0.17.4-allow_any_cmake.patch")
 
 S="${WORKDIR}/${P}"
 
@@ -36,23 +36,4 @@ python_configure_all() {
 	if use debug ; then
 	   DISTUTILS_ARGS+=( "--debug" )
 	fi
-}
-
-src_compile()
-{
-	distutils-r1_src_compile
-	rm -fR "${ED}"/usr/lib/python*/site-packages/_distutils_hack
-	rm -fR "${ED}"/usr/lib/python*/site-packages/wheel
-	rm -fR "${ED}"/usr/lib/python*/site-packages/setuptools
-	rm -fR "${ED}"/usr/lib/python*/site-packages/pkg_resources
-
-}
-
-src_install()
-{
-	distutils-r1_src_install
-	rm -fR "${ED}"/usr/lib/python*/site-packages/_distutils_hack
-	rm -fR "${ED}"/usr/lib/python*/site-packages/wheel
-	rm -fR "${ED}"/usr/lib/python*/site-packages/setuptools
-	rm -fR "${ED}"/usr/lib/python*/site-packages/pkg_resources
 }

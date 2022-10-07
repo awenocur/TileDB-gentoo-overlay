@@ -1,0 +1,42 @@
+diff --git a/setup.py b/setup.py
+index 5cb067f..3391050 100644
+--- a/setup.py
++++ b/setup.py
+@@ -499,24 +499,7 @@ class get_pybind_include(object):
+ 
+ 
+ def cmake_available():
+-    """
+-    Checks whether CMake command is available and >= version 3.21
+-      Note 11/23/2021: < 3.22 temporarily due to AWS SDK imcompatibility.
+-    :return:
+-    """
+-    CMAKE_MINIMUM_MAJOR = 3
+-    CMAKE_MINIMUM_MINOR = 21
+-    CMAKE_MAXIMUM_MINOR = 22
+-    try:
+-        output = subprocess.check_output(["cmake", "--version"]).split()
+-        version = output[2].decode("utf-8").split(".")
+-        return (
+-            int(version[0]) >= CMAKE_MINIMUM_MAJOR
+-            and int(version[1]) >= CMAKE_MINIMUM_MINOR
+-            and int(version[1]) < CMAKE_MAXIMUM_MINOR
+-        )
+-    except:
+-        return False
++    return True
+ 
+ 
+ def parse_requirements(req_file):
+diff --git a/misc/requirements_wheel.txt b/misc/requirements_wheel.txt
+index b4cb312..5a864a9 100644
+--- a/misc/requirements_wheel.txt
++++ b/misc/requirements_wheel.txt
+@@ -9,7 +9,6 @@ numpy==1.21.* ; python_version >= "3.10"
+ 
+ #-------------------------------
+ # Note 11/23/2021: the current version of the AWS sdk does not work with cmake 3.22
+-cmake >= 3.21, < 3.22
+ cython >= 0.27
+ pybind11 >= 2.6.2
+ setuptools >= 18.0
