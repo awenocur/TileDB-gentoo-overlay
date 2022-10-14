@@ -18,11 +18,11 @@ PYTHON_REQ_USE="threads(+)"
 KEYWORDS="amd64 ~x86"
 
 RDEPEND="
-        dev-python/pyarrow
-        dev-python/TileDB
-        dev-python/attrs
-	dev-python/urllib3
-	=dev-python/cloudpickle-TileDB-1.4.1
+        dev-python/pyarrow[${PYTHON_USEDEP}]
+        dev-python/TileDB[${PYTHON_USEDEP}]
+        dev-python/attrs[${PYTHON_USEDEP}]
+	dev-python/urllib3[${PYTHON_USEDEP}]
+	=dev-python/cloudpickle-TileDB-1.4.1[${PYTHON_USEDEP}]
 	"
 BDEPEND="dev-python/setuptools"
 
