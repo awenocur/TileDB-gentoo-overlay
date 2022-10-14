@@ -33,7 +33,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-gcs \
-		--disable-plugins \
+		--enable-plugins \
 		$(use_enable s3) \ \
 		$(use_enable bzip2 bz2) \
 		$(use_enable curl libcurl) \
