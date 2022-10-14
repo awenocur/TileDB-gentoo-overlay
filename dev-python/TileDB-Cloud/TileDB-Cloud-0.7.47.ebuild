@@ -5,7 +5,7 @@ EAPI=8
 SLOT=0
 LICENSE="MIT"
 
-PYTHON_COMPAT=( python3_{6..10} )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1 git-r3
 
 EGIT_REPO_URI="https://github.com/TileDB-Inc/TileDB-Cloud-Py.git"
