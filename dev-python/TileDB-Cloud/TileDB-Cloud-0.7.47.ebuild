@@ -21,6 +21,7 @@ RDEPEND="
         dev-python/pyarrow
         dev-python/TileDB
         dev-python/attrs
+	dev-python/urllib3
 	=dev-python/cloudpickle-TileDB-1.4.1
 	"
 BDEPEND="dev-python/setuptools"
