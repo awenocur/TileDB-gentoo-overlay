@@ -5,6 +5,6 @@ EAPI="7"
 
 inherit R-packages
 
-DEPEND="dev-R/Rcpp"
+DEPEND=">=dev-R/Rcpp-1.0.9"
 LICENSE='GPL-2+'
 KEYWORDS="amd64"
