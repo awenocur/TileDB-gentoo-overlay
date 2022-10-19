@@ -1,0 +1,32 @@
+diff --git a/pyarrow/serialization.py b/pyarrow/serialization.py
+index 6eacbc9..3fd293b 100644
+--- a/pyarrow/serialization.py
++++ b/pyarrow/serialization.py
+@@ -23,10 +23,7 @@ import numpy as np
+ import pyarrow as pa
+ from pyarrow.lib import SerializationContext, py_buffer, builtin_pickle
+ 
+-try:
+-    import cloudpickle
+-except ImportError:
+-    cloudpickle = builtin_pickle
++cloudpickle = builtin_pickle
+ 
+ 
+ try:
+diff --git a/pyarrow/compat.pxi b/pyarrow/compat.pxi
+index 98aa1f2..f114948 100644
+--- a/pyarrow/compat.pxi
++++ b/pyarrow/compat.pxi
+@@ -39,10 +39,7 @@ except ImportError:
+     import pickle as builtin_pickle
+ 
+ 
+-try:
+-    import cloudpickle as pickle
+-except ImportError:
+-    pickle = builtin_pickle
++pickle = builtin_pickle
+ 
+ 
+ def tobytes(o):

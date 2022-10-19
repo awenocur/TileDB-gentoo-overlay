@@ -25,5 +25,6 @@ BDEPEND="
 	)"
 
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+PATCHES=( "${FILESDIR}/pyarrow-9.0.0-no-pickle.patch" )
 
 distutils_enable_tests pytest
