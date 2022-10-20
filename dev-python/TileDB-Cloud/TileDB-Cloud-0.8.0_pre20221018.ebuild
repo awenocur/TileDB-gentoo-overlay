@@ -33,6 +33,7 @@ HOMEPAGE="https://tiledb.com/"
 src_prepare()
 {
 	default
+	printf '0i\n%s\n.\nwq\n' 'import tiledb.cloud.cloudpickle as cloudpickle' | ed ${S}/__init__.py 
 	for file in $(find "${S}" -type f -exec grep -l '^import cloudpickle' \{} \;)
 		do printf '%s\n%s\n' ',s/^import cloudpickle$/import tiledb.cloud.cloudpickle as cloudpickle/' 'wq' | ed "${file}"
 	done
