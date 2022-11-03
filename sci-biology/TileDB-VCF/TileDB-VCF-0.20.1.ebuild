@@ -44,7 +44,9 @@ src_configure() {
 		-DCATCH_INCLUDE_DIR=/usr/include/catch
 	)
 	if use debug ; then
-		mycmakeargs+=(-DCMAKE_BUILD_TYPE=Debug )		
+		mycmakeargs+=(-DCMAKE_BUILD_TYPE=Debug
+		-DCMAKE_C_FLAGS=-O0\ -ggdb
+		-DCMAKE_CXX_FLAGS=-O0\ -ggdb)
 	fi
 	if use address-sanitize ; then
 		mycmakeargs+=(-DSANITIZER=address )		

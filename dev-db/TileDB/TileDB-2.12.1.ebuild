@@ -73,7 +73,9 @@ src_configure() {
 		mycmakeargs+=( -DTILEDB_CAPNPROTO_SRC=${BUILD_DIR}/externals/src/ep_capnp )
 	fi
 	if use debug ; then
-		mycmakeargs+=(-DCMAKE_BUILD_TYPE=Debug )		
+		mycmakeargs+=(-DCMAKE_BUILD_TYPE=Debug
+			      -DCMAKE_C_FLAGS=-O0\ -ggdb
+			      -DCMAKE_CXX_FLAGS=-O0\ -ggdb)
 	fi
 	cmake_src_configure
 }
