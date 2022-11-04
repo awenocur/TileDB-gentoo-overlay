@@ -21,7 +21,7 @@ PYTHON_REQ_USE="threads(+)"
 KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
-DEPEND=">=dev-db/TileDB-2.9
+DEPEND=">=dev-db/TileDB-2.12
 	>=dev-python/pybind11-2.3.0[${PYTHON_USEDEP}]
 	dev-python/pip
 	dev-python/cython
