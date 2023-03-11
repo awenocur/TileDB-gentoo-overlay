@@ -9,7 +9,7 @@ DESCRIPTION="The Universal Storage Engine"
 HOMEPAGE="https://tiledb.com/"
 
 EGIT_REPO_URI="https://github.com/TileDB-Inc/TileDB.git"
-EGIT_COMMIT="db00e709701fa1787dce68c7563f775d6a0770ad"
+EGIT_COMMIT="0c9da0a4d0bd8e5712b890201bfd1922d00932b8"
 
 PATCHES=(
 	"${FILESDIR}/TileDB-2.11.1-cancel-magic-download.patch"
