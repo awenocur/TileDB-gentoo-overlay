@@ -53,15 +53,15 @@ src_unpack()
 	git-r3_fetch "https://chromium.googlesource.com/webm/libwebp" ${WEBP_BRANCH}
 	if use serialization; then git-r3_fetch "https://github.com/capnproto/capnproto.git" ${CAPNPROTO_REV}; fi
 	git-r3_src_unpack
-	git-r3_checkout "https://github.com/TileDB-Inc/file-windows.git" ${MAGIC_REV}
-	git-r3_checkout "https://github.com/catchorg/Catch2.git" ${CATCH2_REV}
-	if use webp; then git-r3_checkout "https://chromium.googlesource.com/webm/libwebp" ${WEBP_COMMIT}; fi
-	if use serialization; then git-r3_checkout "https://github.com/capnproto/capnproto.git" ${CAPNPROTO_REV}; fi
+	git-r3_checkout "https://github.com/TileDB-Inc/file-windows.git" ep_magic
+	git-r3_checkout "https://github.com/catchorg/Catch2.git" ep_catch
+	if use webp; then git-r3_checkout "https://chromium.googlesource.com/webm/libwebp" ep_webp; fi
+	if use serialization; then git-r3_checkout "https://github.com/capnproto/capnproto.git" ep_capnp; fi
 	mkdir -p "${BUILD_DIR}/externals/src"
-	mv ${WORKDIR}/${MAGIC_REV} "${BUILD_DIR}/externals/src/ep_magic"
-	mv ${WORKDIR}/${CATCH2_REV} "${BUILD_DIR}/externals/src/ep_catch"
-	if use serialization; then mv ${WORKDIR}/${CAPNPROTO_REV} "${BUILD_DIR}/externals/src/ep_capnp"; fi
-	if use webp; then mv ${WORKDIR}/${WEBP_COMMIT} "${BUILD_DIR}/externals/src/ep_webp"; fi
+	mv ${WORKDIR}/ep_magic "${BUILD_DIR}/externals/src"
+	mv ${WORKDIR}/ep_catch "${BUILD_DIR}/externals/src"
+	if use serialization; then mv ${WORKDIR}/ep_capnp "${BUILD_DIR}/externals/src"; fi
+	if use webp; then mv ${WORKDIR}/ep_webp "${BUILD_DIR}/externals/src"; fi
 }
 
 src_prepare() {
