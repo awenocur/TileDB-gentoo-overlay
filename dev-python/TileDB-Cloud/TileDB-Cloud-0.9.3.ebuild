@@ -36,5 +36,5 @@ src_prepare()
 	for file in $(find "${S}" -type f -exec grep -l '^import cloudpickle' \{} \;)
 		do printf '%s\n%s\n' ',s/^import cloudpickle$/import tiledb.cloud.cloudpickle as cloudpickle/' 'wq' | ed "${file}"
 	done
-	cp ${FILESDIR}/cloudpickle.py ${S}/tiledb/cloud
+	cp ${FILESDIR}/cloudpickle.py ${S}/src/tiledb/cloud
 }
