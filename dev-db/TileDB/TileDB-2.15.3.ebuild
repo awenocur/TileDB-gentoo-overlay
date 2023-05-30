@@ -13,7 +13,7 @@ EGIT_BRANCH=release-2.15
 EGIT_COMMIT="689bea02c3ab28a908d79ebfd1d744f0e5ea5415"
 
 PATCHES=(
-	"${FILESDIR}/TileDB-2.11.1-cancel-magic-download.patch"
+	"${FILESDIR}/TileDB-2.15.3-cancel-magic-download.patch"
 	"${FILESDIR}/TileDB-2.10.2-cancel-capnp-download.patch"
 	"${FILESDIR}/TileDB-2.13.0-cancel-catch-download.patch"
 	"${FILESDIR}/TileDB-2.15.3-cancel-webp-download.patch"

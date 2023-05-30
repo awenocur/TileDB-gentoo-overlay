@@ -68,7 +68,8 @@ index 0598e386e..f40ba6aaf 100644
 +    INTERFACE_INCLUDE_DIRECTORIES "${TILEDB_EP_INSTALL_PREFIX}/include/webp")
    # One install_target_libs() with all of these was only installing the first item.
    install_target_libs(WebP::webp)
-   install_target_libs(WebP::webpdecoder)--- a/cmake/TileDB-Superbuild.cmake
+   install_target_libs(WebP::webpdecoder)
+--- a/cmake/TileDB-Superbuild.cmake
 +++ b/cmake/TileDB-Superbuild.cmake
 @@ -49,7 +49,8 @@ set(INHERITED_CMAKE_ARGS
    -DTILEDB_INSTALL_LIBDIR=${TILEDB_INSTALL_LIBDIR}
