@@ -8,8 +8,8 @@ LICENSE="MIT"
 PYTHON_COMPAT=( python3_{6..10} )
 inherit distutils-r1 git-r3
 
-PATCHES=("${FILESDIR}/TileDB-0.17.4-requirements.patch"
-	"${FILESDIR}/TileDB-0.17.4-allow_any_cmake.patch")
+PATCHES=("${FILESDIR}/TileDB-0.21.4-requirements.patch"
+	"${FILESDIR}/TileDB-0.21.4-allow_any_cmake.patch")
 
 SRC_URI="https://files.pythonhosted.org/packages/80/98/8de0fd3e86d8286a2594e3fa6afc46d751130d26ebb7b1f34e9067992c6f/setuptools-58.3.0.tar.gz
 	 https://github.com/pypa/wheel/archive/0.37.1.tar.gz -> wheel-0.37.1.gh.tar.gz"
