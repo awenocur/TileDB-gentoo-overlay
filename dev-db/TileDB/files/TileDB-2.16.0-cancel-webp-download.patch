@@ -29,7 +29,7 @@ index 8219b2a0c..ac1238462 100644
      )
      list(APPEND TILEDB_EXTERNAL_PROJECTS ep_webp)
      list(APPEND FORWARD_EP_CMAKE_ARGS
-@@ -90,6 +83,39 @@ endif()
+@@ -90,6 +83,38 @@ endif()
  
  # Always building static EP, install it..
  if (TILEDB_WEBP_EP_BUILT)
