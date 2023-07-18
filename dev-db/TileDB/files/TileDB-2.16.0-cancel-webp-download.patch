@@ -1,0 +1,84 @@
+diff --git a/cmake/Modules/FindWebp_EP.cmake b/cmake/Modules/FindWebp_EP.cmake
+index 8219b2a0c..ac1238462 100644
+--- a/cmake/Modules/FindWebp_EP.cmake
++++ b/cmake/Modules/FindWebp_EP.cmake
+@@ -46,13 +46,6 @@ if(NOT TILEDB_WEBP_EP_BUILT)
+     # that was modified by tiledb to also build with cmake for nix
+     ExternalProject_Add(ep_webp
+       PREFIX "externals"
+-      GIT_REPOSITORY "https://chromium.googlesource.com/webm/libwebp"
+-      #GIT_TAG "release-1.?.?" # after 'static' addition in some release
+-      # from branch 'main' history as the 'static' support added apr 12 2022
+-      # at implementation time is not yet in release branch/tag.
+-      GIT_TAG "a19a25bb03757d5bb14f8d9755ab39f06d0ae5ef"
+-      GIT_SUBMODULES_RECURSE TRUE
+-      UPDATE_COMMAND ""
+       CMAKE_ARGS
+         -DCMAKE_INSTALL_PREFIX=${TILEDB_EP_INSTALL_PREFIX}
+         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+@@ -70,11 +63,11 @@ if(NOT TILEDB_WEBP_EP_BUILT)
+         -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
+         -DCMAKE_OSX_DEPLOYMENT_TARGET=${CMAKE_OSX_DEPLOYMENT_TARGET}
+         -DCMAKE_OSX_SYSROOT=${CMAKE_OSX_SYSROOT}
+-      LOG_DOWNLOAD TRUE
+       LOG_CONFIGURE TRUE
+       LOG_BUILD TRUE
+       LOG_INSTALL TRUE
+       LOG_OUTPUT_ON_FAILURE ${TILEDB_LOG_OUTPUT_ON_FAILURE}
++      SOURCE_DIR ${TILEDB_WEBP_SRC}
+     )
+     list(APPEND TILEDB_EXTERNAL_PROJECTS ep_webp)
+     list(APPEND FORWARD_EP_CMAKE_ARGS
+@@ -90,6 +83,39 @@ endif()
+ 
+ # Always building static EP, install it..
+ if (TILEDB_WEBP_EP_BUILT)
++   find_library(webp_webp_LIBRARIES
++    NAMES libwebp${CMAKE_SHARED_LIBRARY_SUFFIX}
++    PATHS ${TILEDB_EP_INSTALL_PREFIX}
++    PATH_SUFFIXES lib lib64
++  )
++   find_library(webp_decoder_LIBRARIES
++    NAMES libwebpdecoder${CMAKE_SHARED_LIBRARY_SUFFIX}
++    PATHS ${TILEDB_EP_INSTALL_PREFIX}
++    PATH_SUFFIXES lib lib64
++  )
++   find_library(webp_demux_LIBRARIES
++    NAMES libwebpdemux${CMAKE_SHARED_LIBRARY_SUFFIX}
++    PATHS ${TILEDB_EP_INSTALL_PREFIX}
++    PATH_SUFFIXES lib lib64
++  )
++   find_library(webp_mux_LIBRARIES
++    NAMES libwebpmux${CMAKE_SHARED_LIBRARY_SUFFIX}
++    PATHS ${TILEDB_EP_INSTALL_PREFIX}
++    PATH_SUFFIXES lib lib64
++  )
++  set_target_properties(WebP::webp PROPERTIES
++    IMPORTED_LOCATION "${webp_webp_LIBRARIES}"
++    INTERFACE_INCLUDE_DIRECTORIES "${TILEDB_EP_INSTALL_PREFIX}/include/webp")
++  set_target_properties(WebP::webpdecoder PROPERTIES
++    IMPORTED_LOCATION "${webp_decoder_LIBRARIES}"
++    INTERFACE_INCLUDE_DIRECTORIES "${TILEDB_EP_INSTALL_PREFIX}/include/webp")
++  set_target_properties(WebP::webpdemux PROPERTIES
++    IMPORTED_LOCATION "${webp_demux_LIBRARIES}"
++    INTERFACE_INCLUDE_DIRECTORIES "${TILEDB_EP_INSTALL_PREFIX}/include/webp")
++  add_library(WebP::webpmux UNKNOWN IMPORTED)
++  set_target_properties(WebP::webpmux PROPERTIES
++    IMPORTED_LOCATION "${webp_mux_LIBRARIES}"
++    INTERFACE_INCLUDE_DIRECTORIES "${TILEDB_EP_INSTALL_PREFIX}/include/webp")
+   # One install_target_libs() with all of these was only installing the first item.
+   install_target_libs(WebP::webp)
+   install_target_libs(WebP::webpdecoder)
+diff --git a/cmake/TileDB-Superbuild.cmake b/cmake/TileDB-Superbuild.cmake
+index 60006d65a..f1cf7b438 100644
+--- a/cmake/TileDB-Superbuild.cmake
++++ b/cmake/TileDB-Superbuild.cmake
+@@ -58,7 +58,8 @@ set(INHERITED_CMAKE_ARGS
+   -DTILEDB_INSTALL_LIBDIR=${TILEDB_INSTALL_LIBDIR}
+   -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
+   -DTILEDB_EXPERIMENTAL_FEATURES=${TILEDB_EXPERIMENTAL_FEATURES}
+   -DTILEDB_CAPNPROTO_SRC=${TILEDB_CAPNPROTO_SRC}
++  -DTILEDB_WEBP_SRC=${TILEDB_WEBP_SRC}
+   -DTILEDB_TESTS_AWS_S3_CONFIG=${TILEDB_TESTS_AWS_S3_CONFIG}
+   -DTILEDB_TESTS_ENABLE_REST=${TILEDB_TESTS_ENABLE_REST}
+   -DTILEDB_VCPKG_POLICY_EMPTY_PACKAGE=${TILEDB_VCPKG_POLICY_EMPTY_PACKAGE}
