@@ -62,7 +62,6 @@ index 8219b2a0c..ac1238462 100644
 +  set_target_properties(WebP::webpdemux PROPERTIES
 +    IMPORTED_LOCATION "${webp_demux_LIBRARIES}"
 +    INTERFACE_INCLUDE_DIRECTORIES "${TILEDB_EP_INSTALL_PREFIX}/include/webp")
-+  add_library(WebP::webpmux UNKNOWN IMPORTED)
 +  set_target_properties(WebP::webpmux PROPERTIES
 +    IMPORTED_LOCATION "${webp_mux_LIBRARIES}"
 +    INTERFACE_INCLUDE_DIRECTORIES "${TILEDB_EP_INSTALL_PREFIX}/include/webp")
